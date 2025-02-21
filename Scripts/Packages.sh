@@ -53,11 +53,7 @@ UPDATE_PACKAGE() {
 
 # UPDATE_PACKAGE "包名" "项目地址" "项目分支" "pkg/name，可选，pkg为从大杂烩中单独提取包名插件；name为重命名为包名"
 UPDATE_PACKAGE "argon" "sbwml/luci-theme-argon" "openwrt-24.10"
-
-
 UPDATE_PACKAGE "mosdns" "sbwml/luci-app-mosdns" "v5"
-
-
 
 if [[ $WRT_BRANCH != *"21"* ]]; then
 	UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
