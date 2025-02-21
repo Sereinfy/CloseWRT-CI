@@ -34,15 +34,17 @@ sed -i '/MEMORY_SHRINK/d' ./.config
 if [ -n "$WRT_PACKAGE" ]; then
 	echo -e "$WRT_PACKAGE" >> ./.config
 fi
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 23.x feeds/packages/lang/golang
+rm -rf feeds/packages/net/v2ray-geodata
 
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 #非21.02专用
 if [[ $WRT_BRANCH != *"21"* ]]; then
 	sed -i '/miniupnpd/d; /luci-app-upnp/d' ./.config
 
 	echo "CONFIG_PACKAGE_luci-app-upnp=n" >> ./.config
 	echo "CONFIG_PACKAGE_miniupnpd=n" >> ./.config
-
-	echo "CONFIG_PACKAGE_luci-app-homeproxy=y" >> ./.config
 	echo "CONFIG_PACKAGE_luci-app-nikki=y" >> ./.config
-	echo "CONFIG_PACKAGE_luci-app-upnp-mtk-adjust=y" >> ./.config
 fi
